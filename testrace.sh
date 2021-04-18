@@ -33,7 +33,7 @@ directory(){
 	cd /home/testrace
 }
 install(){
-	[[ ! -d /home/testrace/besttrace ]] && wget https://cdn.ipip.net/17mon/besttrace4linux.zip && unzip besttrace4linux.zip
+	[[ ! -d /home/testrace/besttrace ]] && wget https://raw.githubusercontent.com/nanqinlang-script/testrace/master/besttrace.tar.gz && tar -zxf besttrace.tar.gz && rm besttrace.tar.gz
 	[[ ! -d /home/testrace/besttrace ]] && echo -e "${Error} download failed, please check!" && exit 1
 	chmod -R +x /home/testrace
 }
@@ -162,16 +162,21 @@ repeat_test_alternative(){
 
 
 test_all(){
-	result_all	'101.227.255.45'	'上海电信(天翼云)'
-	result_all	'117.28.254.129'	'厦门电信CN2'
+	result_all	'218.81.194.122'	'上海电信'
 
-	result_all	'101.71.241.238'	'浙江杭州联通'
+	result_all	'58.32.9.246'	        '上海电信CN2'
 
-	result_all	'112.17.0.106'		'浙江杭州移动'
+	result_all	'42.227.192.12' 	'河南信阳联通'
 
-	result_all	'202.205.6.30'		'北京教育网'
+	result_all	'120.83.0.118' 	        '广东广州联通'
 
-	echo -e "${Info} 四网路由快速测试 已完成 ！"
+	result_all	'58.246.231.201' 	'上海联通(1)'
+
+	result_all	'139.226.50.48' 	'上海联通(2)'
+
+	result_all	'183.233.56.62'		'广东广州移动'
+
+	echo -e "${Info} 三网路由快速测试 已完成 ！"
 }
 result_all(){
 	ISP_name=$2
@@ -189,7 +194,7 @@ install
 cd besttrace
 
 echo -e "${Info} 选择你要使用的功能: "
-echo -e "1.选择一个节点进行测试\n2.四网路由快速测试\n3.手动输入 ip 进行测试"
+echo -e "1.选择一个节点进行测试\n2.三网路由快速测试\n3.手动输入 ip 进行测试"
 read -p "输入数字以选择:" function
 
 	while [[ ! "${function}" =~ ^[1-3]$ ]]
